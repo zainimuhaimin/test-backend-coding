@@ -1,6 +1,6 @@
 import express from "express";
 import route from "./routes/route.mjs";
-
+import "dotenv/config";
 const app = express();
 // set port
 const PORT = process.env.PORT || 8087;

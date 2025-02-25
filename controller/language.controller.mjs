@@ -1,5 +1,6 @@
 import languageDto from "../dto/languageDto.mjs";
 
+import "dotenv/config";
 const globalSlice = [];
 
 function addToGlobalSlice(req) {
@@ -25,32 +26,42 @@ function addToGlobalSlice(req) {
 export async function getLanguage(req, res) {
 	console.log("start get language");
 	try {
-		// di komen karen sudah masuk ke soal post language menggunakan global slice
-		// const language = new languageDto();
-		// language.language = "C";
-		// language.appeared = 1972;
-		// language.created = ["Dennis Ritchie"];
-		// language.functional = true;
-		// language.objectOriented = false;
-		// language.relation = {
-		// 	influencedBy: ["B", "ALGOL 68", "Assembly", "FORTRAN"],
-		// 	influences: [
-		// 		"C++",
-		// 		"Objective-C",
-		// 		"C#",
-		// 		"Java",
-		// 		"JavaScript",
-		// 		"PHP",
-		// 		"Go",
-		// 	],
-		// };
-		// console.log(language);
-		console.log(globalSlice);
-		if (req.params.id != null) {
-			const response = globalSlice[req.params.id];
-			return res.status(200).send(response);
+		// ubah value menjadi false untuk mengambil data hardcode
+		if (process.env.IS_FROM_GLOBAL_SLICE === "true") {
+			console.log("ambil data language di global slice");
+
+			if (req.params.id != null) {
+				console.log("ambil data berdasarkan index");
+
+				const response = globalSlice[req.params.id];
+				return res.status(200).send(response);
+			} else {
+				console.log("ambil semua data global slice");
+
+				return res.status(200).send({ globalSlice });
+			}
 		} else {
-			return res.status(200).send({ globalSlice });
+			console.log("ambil data language hardcoded");
+
+			const language = new languageDto();
+			language.language = "C";
+			language.appeared = 1972;
+			language.created = ["Dennis Ritchie"];
+			language.functional = true;
+			language.objectOriented = false;
+			language.relation = {
+				influencedBy: ["B", "ALGOL 68", "Assembly", "FORTRAN"],
+				influences: [
+					"C++",
+					"Objective-C",
+					"C#",
+					"Java",
+					"JavaScript",
+					"PHP",
+					"Go",
+				],
+			};
+			return res.status(200).json({ language });
 		}
 	} catch (error) {
 		throw error;
