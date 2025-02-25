@@ -27,7 +27,7 @@ app
 	.all(methodNotAllowed);
 
 app.get("/", (req, res) => {
-	res.status(200).send("Hello Go developers");
+	res.status(200).json("Hello Go developers");
 });
 
 app.get("/palindrome", validatePalindromText);

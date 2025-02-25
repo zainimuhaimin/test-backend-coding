@@ -12,7 +12,7 @@ export async function validatePalindromText(req, res) {
 		if (normalText === reverseText) {
 			return res.status(200).json("Palindrome");
 		} else {
-			return res.status(200).json("Not Palindrome");
+			return res.status(400).json("Not Palindrome");
 		}
 	} catch (error) {
 		console.log(error);
