@@ -1,6 +1,28 @@
 {
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2"
-  }
+	"name": "test-be",
+	"description": "Test BackEnd Coding Digital Nayaba Adhinaya",
+	"version": "1.0.0",
+	"main": "server.mjs",
+	"scripts": {
+		"start": "node server.mjs",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zainimuhaimin/test-backend-coding.git"
+	},
+	"keywords": [
+		"node-js",
+		"express-js"
+	],
+	"author": "zaini",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/zainimuhaimin/test-backend-coding/issues"
+	},
+	"homepage": "https://github.com/zainimuhaimin/test-backend-coding#readme",
+	"dependencies": {
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2"
+	}
 }
